@@ -1,0 +1,25 @@
+.container {
+    width: 60vw;
+}
+
+.reason-title {
+    margin: 0;
+}
+
+.reason {
+    margin: 1rem;
+}
+
+.number {
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: brown;
+    width: 2rem;
+    height: 2rem;
+    padding: 1rem;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0.5rem;
+}
