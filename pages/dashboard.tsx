@@ -1,0 +1,15 @@
+import styles from '../styles/Dashboard.module.css'
+
+
+const Dashboard = () => {
+    return (
+        <div className={styles.container}>
+            <div className={styles["login-card"]}>
+                <h1 className={styles["login-title"]}>Login</h1>
+                <input className={styles.password} type="text" placeholder="Password" />
+            </div>
+        </div>
+    )
+}
+
+export default Dashboard;
