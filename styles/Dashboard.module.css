@@ -13,12 +13,43 @@
     width: 30vw;
     border-radius: 1rem;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .password {
-
+    border: none;
+    width: 12rem;
+    height: 2rem;
+    border-radius: 1rem;
+    font-family: "Inter", sans-serif;
+    padding-left: 0.75rem;
+    margin: 1rem;
+}
+.password:focus {
+    outline: none;
 }
 
+
 .login-title {
-    
+    font-family: "Inter", sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 0;
+}
+
+.login-button {
+    width: 8rem;
+    border-radius: 0.5rem;
+    height: 2rem;
+    background-color: white;
+    color: black;
+    border: none;
+    font-family: "Inter", sans-serif;
+}
+.login-button:hover {
+    cursor: pointer;
 }
