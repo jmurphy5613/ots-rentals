@@ -1,11 +1,18 @@
 import type { NextPage } from 'next'
 import styles from '../styles/Home.module.css'
+import Navbar from '../components/navbar/Navbar'
 
 const Home: NextPage = () => {
   return (
-    <div className={styles.container}>
+    <>
+      <Navbar />
+      <div className={styles.container}>
+        <video autoPlay muted loop className={styles.video}>
+          <source src="/video.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </>
 
-    </div>
   )
 }
 
