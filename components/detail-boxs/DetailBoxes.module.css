@@ -1,13 +1,23 @@
 .container {
-    width: 60vw;
+    width: 70vw;
 }
 
 .reason-title {
     margin: 0;
+    font-size: 1.5rem;
 }
 
 .reason {
-    margin: 1rem;
+    margin: 0 2rem 0 2rem;
+}
+
+.icon {
+    width: 2rem;
+}
+
+.detail {
+    margin-bottom: 1.5rem;
+    margin-top: 0;
 }
 
 .number {
