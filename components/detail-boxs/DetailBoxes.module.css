@@ -7,10 +7,10 @@
 }
 
 .reason-title {
-    margin: 0;
     font-size: 1.5rem;
     font-family: 'Poppins', sans-serif;
     width: 100%;
+    padding-left: 4rem;
 }
 
 .reason {

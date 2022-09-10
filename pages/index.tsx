@@ -8,9 +8,17 @@ const Home: NextPage = () => {
     <>
       <Navbar />
       <div className={styles.container}>
-        <video muted loop className={styles.video}>
-          <source src="/video.mp4" type="video/mp4" />
-        </video>
+        <div>
+          <div style={{ position: 'absolute', zIndex: '999' }}>
+            <div className={styles["video-title"]}>
+              <h1 className={styles.title}>Borrow for the <br/> Documentary</h1>
+              <button className={styles["store-button"]}>See Current Offerings</button>
+            </div>
+          </div>
+          <video muted loop autoPlay className={styles.video}>
+            <source src="/video.mp4" type="video/mp4" />
+          </video>
+        </div>
         <DetailBoxes />
       </div>
     </>
