@@ -6,7 +6,7 @@ const DetailBoxes = () => {
     return (
         <div className={styles.container}>
             <h1 className={styles["reason-title"]}>Renting gear made easy</h1>
-            <div style={{ display: 'flex' , justifyContent: 'center'}}>
+            <div style={{ display: 'flex' , justifyContent: 'center', width: '70vw'}}>
                 <div className={styles.reason}>
                     <span style={{ display: 'flex' }}>
                         <h2 className={styles.number}>1</h2>

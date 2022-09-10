@@ -1,10 +1,16 @@
 .container {
     width: 70vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
 }
 
 .reason-title {
     margin: 0;
     font-size: 1.5rem;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
 }
 
 .reason {
@@ -18,6 +24,8 @@
 .detail {
     margin-bottom: 1.5rem;
     margin-top: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
 }
 
 .number {
@@ -32,4 +40,5 @@
     justify-content: center;
     align-items: center;
     margin-right: 0.5rem;
+    font-family: 'Poppins', sans-serif;
 }
