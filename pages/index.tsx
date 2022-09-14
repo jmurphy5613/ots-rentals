@@ -2,8 +2,13 @@ import type { NextPage } from 'next'
 import styles from '../styles/Home.module.css'
 import Navbar from '../components/navbar/Navbar'
 import DetailBoxes from '../components/detail-boxs/DetailBoxes'
+import { BsArrowRight } from 'react-icons/bs'
+import { useRouter } from 'next/router'
 
 const Home: NextPage = () => {
+
+  const router = useRouter()
+
   return (
     <>
       <Navbar />
@@ -12,7 +17,9 @@ const Home: NextPage = () => {
           <div style={{ position: 'absolute', zIndex: '999' }}>
             <div className={styles["video-title"]}>
               <h1 className={styles.title}>Borrow for the <br/> Documentary</h1>
-              <button className={styles["store-button"]}>See Current Offerings</button>
+              <button onClick={() => {
+                router.push('/search')
+              }} className={styles["store-button"]}>See Current Offerings <BsArrowRight className={styles["button-arrow"]} /></button>
             </div>
           </div>
           <video muted loop autoPlay className={styles.video}>

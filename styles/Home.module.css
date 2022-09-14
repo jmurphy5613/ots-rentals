@@ -18,6 +18,7 @@
 }
 
 .title {
+  margin: 0 0 1rem 0;
   font-family: 'Poppins', sans-serif;
   font-size: 5rem;
   font-weight: 700;
@@ -33,4 +34,12 @@
   border-radius: 1rem;
   font-family: 'Poppins', sans-serif;
   font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.button-arrow {
+  margin-left: 0.5rem;
 }

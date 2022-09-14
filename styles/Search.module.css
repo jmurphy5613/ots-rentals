@@ -1,0 +1,26 @@
+.container {
+    min-height: 85vh;
+    width: 100vw;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    width: 100%;
+}
+
+.search {
+    width: 80%;
+    height: 4rem;
+    border: none;
+    border-radius: 2rem;
+    padding-left: 2rem;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.5rem;
+    margin-top: 0.3rem;
+}
+.search:focus {
+    outline: none;
+}
