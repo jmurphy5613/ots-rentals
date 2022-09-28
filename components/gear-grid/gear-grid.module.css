@@ -1,0 +1,70 @@
+.gear-grid {
+    display: grid;
+    width: 80%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5rem;
+    margin: 1rem 0;
+}
+
+.gear-card {
+    background-color: #2f3135;
+    height: 50vh;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    /* border: 1px solid #696969; */
+}
+
+.gear-image {
+    width: 60%;
+}
+
+.gear-title-main {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.5rem;
+    color: white;
+    margin: 0;
+}
+
+.image-container {
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gear-titles {
+    width: 70%;
+    height: 30%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.company {
+    font-family: "Poppins", sans-serif;
+    color: white;
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 200;
+}
+
+.add-to-cart {
+    background-color: brown;
+    outline: none;
+    border: none;
+    width: 15rem;
+    height: 2rem;
+    border-radius: 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-top: 0.5rem;
+}
