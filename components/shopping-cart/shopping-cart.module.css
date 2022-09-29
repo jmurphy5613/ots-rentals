@@ -1,0 +1,27 @@
+.cart {
+    height: 300px;
+    width: 200px;
+    background-color: #2f3135;
+    position: absolute;
+    top: 3rem;
+    right: 0;
+    border-radius: 1rem;
+}
+
+.header {
+   width: 100%; 
+   display: flex;
+   justify-content: space-between;
+   padding: 0 1.2rem 0 1rem;
+}
+
+.cart-quantity {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+}
+
+.exit {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    cursor: pointer;
+}
