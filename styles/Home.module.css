@@ -6,13 +6,29 @@
   align-items: center;
 }
 
-.video {
+.video-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  height: 100%;
+  z-index: 999;
+}
+
+.video-container {
   width: 75vw;
+  position: relative;
+}
+
+.video {
+  width: 100%;
+  height: 100%;
   border-radius: 2rem;
+  position: relative;
+  z-index: 0;
 }
 
 .video-title {
-  margin-top: 7rem;
   margin-left: 8rem;
   color: white;
 }

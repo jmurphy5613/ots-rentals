@@ -13,10 +13,10 @@ const Home: NextPage = () => {
     <>
       <Navbar />
       <div className={styles.container}>
-        <div>
-          <div style={{ position: 'absolute', zIndex: '999' }}>
+        <div className={styles["video-container"]}>
+          <div className={styles["video-overlay"]}>
             <div className={styles["video-title"]}>
-              <h1 className={styles.title}>Borrow for the <br/> Documentary</h1>
+              <h1 className={styles.title}>Lights. Camera. <br/> Rent!</h1>
               <button onClick={() => {
                 router.push('/search')
               }} className={styles["store-button"]}>See Current Offerings <BsArrowRight className={styles["button-arrow"]} /></button>

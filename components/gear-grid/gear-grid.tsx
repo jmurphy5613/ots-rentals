@@ -1,4 +1,5 @@
 import styles from './gear-grid.module.css';
+import { useRouter } from 'next/router';
 
 
 const fakeData = [
@@ -17,11 +18,16 @@ const fakeData = [
 ]
 
 const GearGrid = () => {
+
+    const router = useRouter()
+
     return (
         <div className={styles["gear-grid"]}>
             {fakeData.map((item, index) => {
                 return (
-                    <div key={index} className={styles["gear-card"]}>
+                    <div key={index} className={styles["gear-card"]} onClick={() => {
+                        router.push(`/gear-profiles/${index}`)
+                    }}>
                         <div className={styles["image-container"]}>
                             <img className={styles["gear-image"]} src={item.image} />
                         </div>
