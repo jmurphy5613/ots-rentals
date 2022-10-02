@@ -11,7 +11,7 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar numberOfItems={1} />
       <div className={styles.container}>
         <div className={styles["video-container"]}>
           <div className={styles["video-overlay"]}>
