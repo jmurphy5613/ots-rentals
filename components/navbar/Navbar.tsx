@@ -3,13 +3,13 @@ import { BsCartFill } from 'react-icons/bs'
 import { useState } from 'react'
 import ShoppingCart from '../shopping-cart/shopping-cart'
 
-type NavbarProps = {
-    numberOfItems: number
-}
+import { useSelector } from 'react-redux'
 
-const Navbar:React.FC<NavbarProps> = ({ numberOfItems }) => {
+const Navbar = () => {
 
     const [showCart, setShowCart] = useState(false)
+
+    const cart = useSelector((state:any) => state.cart.value)
 
     return (
         <div className={styles.container}>
@@ -19,7 +19,7 @@ const Navbar:React.FC<NavbarProps> = ({ numberOfItems }) => {
                     <BsCartFill className={styles.cart} onClick={() => {
                         setShowCart(true)
                     }} />
-                    {numberOfItems > 0 && <h1 className={styles.number}>{numberOfItems}</h1>}
+                    {cart.items.length > 0 && <h1 className={styles.number}>{cart.items.length}</h1>}
                     {showCart && <ShoppingCart setShowCart={setShowCart} />}
                 </div>
 

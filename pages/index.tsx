@@ -8,6 +8,7 @@ const Home: NextPage = () => {
 
   const router = useRouter()
 
+
   return (
     <>
       <div className={styles.container}>
