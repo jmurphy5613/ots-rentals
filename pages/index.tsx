@@ -1,6 +1,5 @@
 import type { NextPage } from 'next'
 import styles from '../styles/Home.module.css'
-import Navbar from '../components/navbar/Navbar'
 import DetailBoxes from '../components/detail-boxs/DetailBoxes'
 import { BsArrowRight } from 'react-icons/bs'
 import { useRouter } from 'next/router'
@@ -11,7 +10,6 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <Navbar numberOfItems={1} />
       <div className={styles.container}>
         <div className={styles["video-container"]}>
           <div className={styles["video-overlay"]}>

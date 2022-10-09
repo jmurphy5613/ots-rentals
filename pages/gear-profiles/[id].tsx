@@ -1,6 +1,5 @@
 // @ts-nocheck
 
-import Navbar from "../../components/navbar/Navbar"
 import styles from '../../styles/GearProfiles.module.css'
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
@@ -51,7 +50,6 @@ const GearProfiles = () => {
 
     return (
         <>
-            <Navbar numberOfItems={1} />
             <div className={styles.container}>
                 <div className={styles.images}>
                     <div className={styles["image-container"]}>
