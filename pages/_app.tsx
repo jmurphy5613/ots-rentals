@@ -22,7 +22,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Provider store={store}>
-        { router.pathname === '/login' || router.pathname === '/dashboard' && <Navbar />}
+        { router.pathname !== '/login' && router.pathname !== '/dashboard' && <Navbar />}
         <Component {...pageProps} />
       </Provider>
     </>    
