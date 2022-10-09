@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/shopping-cart/shopping-cart.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/user-view/shopping-cart/shopping-cart.tsx"],
   "exclude": ["node_modules"]
 }

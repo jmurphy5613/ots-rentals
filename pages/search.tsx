@@ -1,5 +1,5 @@
 import styles from '../styles/Search.module.css'
-import GearGrid from '../components/gear-grid/gear-grid'
+import GearGrid from '../components/user-view/gear-grid/gear-grid'
 
 
 const Search = () => {

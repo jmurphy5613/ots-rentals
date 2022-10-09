@@ -23,7 +23,7 @@ const fakeData = [
 const Dashboard = () => {
     return (
         <div className={styles.container}>
-            
+            <h1>Current Gear:</h1>
         </div>
     )
 }

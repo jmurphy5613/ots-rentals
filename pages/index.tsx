@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import styles from '../styles/Home.module.css'
-import DetailBoxes from '../components/detail-boxs/DetailBoxes'
+import DetailBoxes from '../components/user-view/detail-boxs/DetailBoxes'
 import { BsArrowRight } from 'react-icons/bs'
 import { useRouter } from 'next/router'
 
