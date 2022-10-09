@@ -1,11 +1,12 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import Navbar from '../components/navbar/Navbar'
-import { useState } from 'react'
 
 import { configureStore } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
 import cartReducer from '../redux/features/cart'
+
+import { useRouter } from 'next/router'
 
 function MyApp({ Component, pageProps }: AppProps) {
 
@@ -16,10 +17,12 @@ function MyApp({ Component, pageProps }: AppProps) {
     }
   })
 
+  const router = useRouter()
+
   return (
     <>
       <Provider store={store}>
-        <Navbar />
+        { router.pathname === '/login' || router.pathname === '/dashboard' && <Navbar />}
         <Component {...pageProps} />
       </Provider>
     </>    
