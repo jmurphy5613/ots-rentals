@@ -1,5 +1,6 @@
+import { useEffect, useState } from 'react'
 import styles from '../styles/Dashboard.module.css'
-
+import axios from 'axios'
 
 const fakeData = [
     {
@@ -21,9 +22,42 @@ const fakeData = [
 ]
 
 const Dashboard = () => {
+
+    const fetchGear = () => {
+        axios.get('http://localhost:3002/gear/get-all').then(e => {
+            setGear(e.data)
+        })
+    }
+
+    useEffect(() => {
+        fetchGear()
+    }, [])
+
+
+    //fields
+    const [name, setName] = useState('')
+    const [price, setPrice] = useState('')
+    const [description, setDescription] = useState('')
+    const [company, setCompany] = useState('')
+
+    //data
+    const [gear, setGear] = useState([])
+
     return (
         <div className={styles.container}>
-            <h1>Current Gear:</h1>
+            <div className={styles['add-gear-form']}>
+                <input className={styles.input} placeholder='Name' onChange={e => setName(e.target.value)} />
+                <input className={styles.input} placeholder='Price/week' onChange={e => setPrice(e.target.value)} />
+                <input className={styles.input} placeholder='Description' onChange={e => setDescription(e.target.value)} />
+                <div className={styles.add} onClick={() => {
+                    axios.post('http://localhost:3002/gear/add', {
+                        price: price,
+                        name: name,
+                        description: description,
+                        company:
+                    })
+                }}>+</div>
+            </div>
         </div>
     )
 }

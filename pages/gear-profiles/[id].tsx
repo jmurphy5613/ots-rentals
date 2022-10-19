@@ -67,7 +67,8 @@ const GearProfiles = () => {
                             <h4 className={styles.number}>{numberOfWeeks}</h4>
                             <button className={styles.add} onClick={() => setNumberOfWeeks(numberOfWeeks+1)}>+</button>
                         </div>
-                        <button className={styles["add-to-cart"]}>Add To Cart</button>  
+                        <button className={styles["add-to-cart"]} onClick={() => {
+                        }}>Add To Cart</button>  
                     </div>
 
                 </div>

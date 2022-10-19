@@ -6,3 +6,36 @@
     justify-content: center;
     align-items: center;
 }
+
+.add-gear-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input {
+    width: 80%;
+    height: 4rem;
+    border: none;
+    border-radius: 2rem;
+    padding-left: 2rem;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.5rem;
+    margin: 1rem;
+    outline: none;
+}
+
+.add {
+    background-color: #3b3b3b;
+    height: 40px;
+    width: 40px;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #bbbbbb;
+    cursor: pointer;
+}
