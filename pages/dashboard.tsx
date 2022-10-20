@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import styles from '../styles/Dashboard.module.css'
 import axios from 'axios'
+import GearGrid from '../components/dashboard/gear-grid/GearGrid'
 
 const fakeData = [
     {
@@ -26,6 +27,7 @@ const Dashboard = () => {
     const fetchGear = () => {
         axios.get('http://localhost:3002/gear/get-all').then(e => {
             setGear(e.data)
+            console.log(e.data)
         })
     }
 
@@ -39,6 +41,7 @@ const Dashboard = () => {
     const [price, setPrice] = useState('')
     const [description, setDescription] = useState('')
     const [company, setCompany] = useState('')
+    const [picture, setPicture] = useState('')
 
     //data
     const [gear, setGear] = useState([])
@@ -46,18 +49,27 @@ const Dashboard = () => {
     return (
         <div className={styles.container}>
             <div className={styles['add-gear-form']}>
-                <input className={styles.input} placeholder='Name' onChange={e => setName(e.target.value)} />
-                <input className={styles.input} placeholder='Price/week' onChange={e => setPrice(e.target.value)} />
-                <input className={styles.input} placeholder='Description' onChange={e => setDescription(e.target.value)} />
+                <input className={styles.input} value={name} placeholder='Name' onChange={e => setName(e.target.value)} />
+                <input className={styles.input} value={picture} placeholder='Picture' onChange={e => setPicture(e.target.value)} />
+                <input className={styles.input} value={price} placeholder='Price/week' onChange={e => setPrice(e.target.value)} />
+                <input className={styles.input} value={description} placeholder='Description' onChange={e => setDescription(e.target.value)} />
+                <input className={styles.input} value={company} placeholder='Company' onChange={e => setCompany(e.target.value)} />
                 <div className={styles.add} onClick={() => {
                     axios.post('http://localhost:3002/gear/add', {
                         price: price,
                         name: name,
                         description: description,
-                        company:
+                        company: company,
+                        picture: picture
                     })
+                    setPrice('')
+                    setPicture('')
+                    setCompany('')
+                    setDescription('')
+                    setName('')
                 }}>+</div>
             </div>
+            <GearGrid gear={gear} />
         </div>
     )
 }

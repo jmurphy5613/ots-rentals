@@ -1,18 +1,23 @@
 import { useEffect } from "react"
 import axios from 'axios'
+import styles from './GearGrid.module.css'
 
 
-const GearGrid = () => {
+type GearGridProps = {
+    gear: Array<Object>
+}
 
-    useEffect(() => {
-        axios.get('http://localhost:3002/gear/get-all').then((e) => {
-            
-        })
-    }, [])
+const GearGrid:React.FC<GearGridProps> = ({ gear }) => {
 
     return (
-        <div>
-
+        <div className={styles.grid}>
+            {gear.map((element, index) => {
+                return (
+                    <div className={styles["grid-item"]}>
+                        
+                    </div>
+                )
+            })}
         </div>
     )
 }
