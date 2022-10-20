@@ -42,3 +42,8 @@
     color: #bbbbbb;
     cursor: pointer;
 }
+
+.gear-label {
+    font-weight: 300;
+    font-family: "Poppins", sans-serif;
+}

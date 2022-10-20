@@ -69,6 +69,7 @@ const Dashboard = () => {
                     setName('')
                 }}>+</div>
             </div>
+            <h1 className={styles["gear-label"]}>All Gear ({gear.length})</h1>
             <GearGrid gear={gear} />
         </div>
     )
