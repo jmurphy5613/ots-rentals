@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import styles from '../styles/Dashboard.module.css'
 import axios from 'axios'
 import GearGrid from '../components/dashboard/gear-grid/GearGrid'
+import EditGearPopup from '../components/dashboard/edit-gear-popup/EditGearPopup'
 
 const fakeData = [
     {
@@ -46,6 +47,10 @@ const Dashboard = () => {
     //data
     const [gear, setGear] = useState([])
 
+    //popup state
+    const [showPopup, setShowPopup] = useState(false)
+    const [gearSelected, setGearSelected] = useState<number>(-1)
+
     return (
         <div className={styles.container}>
             <div className={styles['add-gear-form']}>
@@ -70,7 +75,8 @@ const Dashboard = () => {
                 }}>+</div>
             </div>
             <h1 className={styles["gear-label"]}>All Gear ({gear.length})</h1>
-            <GearGrid gear={gear} />
+            <GearGrid showPopup={setShowPopup} setGearSelected={setGearSelected} gear={gear} />
+            {showPopup && <EditGearPopup currentGear={gear[gearSelected]} />}
         </div>
     )
 }

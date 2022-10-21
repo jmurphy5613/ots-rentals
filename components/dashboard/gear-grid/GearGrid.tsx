@@ -1,30 +1,24 @@
-import { useEffect } from "react"
 import styles from './GearGrid.module.css'
 import { BsFillPencilFill } from 'react-icons/bs'
+import { Gear } from '../../../utils/types'
 
 type GearGridProps = {
-    gear: Array<Gear>
+    gear: Array<Gear>,
+    setGearSelected: React.Dispatch<React.SetStateAction<number>>,
+    showPopup: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-type Gear = {
-    id: string,
-    picture: string,
-    company: string,
-    description: string,
-    currentUserEmail: string,
-    checkoutDate: number,
-    returnDate: string,
-    name: string
-}
-
-const GearGrid:React.FC<GearGridProps> = ({ gear }) => {
+const GearGrid:React.FC<GearGridProps> = ({ gear, setGearSelected, showPopup }) => {
 
     return (
         <div className={styles.grid}>
             {gear.map((element:Gear, index) => {
                 return (
                     <div className={styles["grid-item"]}>
-                        <div className={styles.edit}>
+                        <div className={styles.edit} onClick={() => {
+                            setGearSelected(index)
+                            showPopup(true)
+                        }}>
                             <BsFillPencilFill  />
                         </div>
                         <img className={styles.image} src={element.picture} />
