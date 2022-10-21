@@ -76,7 +76,7 @@ const Dashboard = () => {
             </div>
             <h1 className={styles["gear-label"]}>All Gear ({gear.length})</h1>
             <GearGrid showPopup={setShowPopup} setGearSelected={setGearSelected} gear={gear} />
-            {showPopup && <EditGearPopup currentGear={gear[gearSelected]} />}
+            {showPopup && <EditGearPopup currentGear={gear[gearSelected]} showPopup={setShowPopup} />}
         </div>
     )
 }

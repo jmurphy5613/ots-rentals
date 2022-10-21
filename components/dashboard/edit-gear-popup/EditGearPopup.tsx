@@ -4,10 +4,11 @@ import { useState } from 'react'
 
 
 type EditGearPopupProps = {
-    currentGear: Gear
+    currentGear: Gear,
+    showPopup: React.Dispatch<React.SetStateAction<boolean>>
 } 
 
-const EditGearPopup:React.FC<EditGearPopupProps> = ({ currentGear }) => {
+const EditGearPopup:React.FC<EditGearPopupProps> = ({ currentGear, showPopup }) => {
 
 
     const [name, setName] = useState(currentGear.name)
@@ -24,7 +25,11 @@ const EditGearPopup:React.FC<EditGearPopupProps> = ({ currentGear }) => {
                 <input className={styles.input} value={price} placeholder='Price/week' onChange={e => setPrice(e.target.value)} />
                 <input className={styles.input} value={description} placeholder='Description' onChange={e => setDescription(e.target.value)} />
                 <input className={styles.input} value={company} placeholder='Company' onChange={e => setCompany(e.target.value)} />
-                <h2 className={styles.exit}>X</h2>
+                <button className={styles.update}>Udpate</button>
+
+                <h2 onClick={() => {
+                    showPopup(false)
+                }} className={styles.exit}>X</h2>
             </div>
         </div>
     )
