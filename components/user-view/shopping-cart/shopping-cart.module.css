@@ -9,6 +9,14 @@
     z-index: 2;
 }
 
+.content {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
 .header {
    width: 100%; 
    display: flex;
@@ -25,4 +33,16 @@
     font-family: "Poppins", sans-serif;
     font-weight: 400;
     cursor: pointer;
+}
+
+.checkout {
+    cursor: pointer;
+    border: none;
+    width: 80%;
+    height: 2rem;
+    border-radius: 1rem;
+    background-color: brown;
+    font-family: "Poppins", sans-serif;
+    position: absolute;
+    bottom: 1rem;
 }
