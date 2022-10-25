@@ -53,7 +53,7 @@ const EditGearPopup:React.FC<EditGearPopupProps> = ({ currentGear, showPopup }) 
                         price: price
                     })
                     showPopup(false)
-                }}>Udpate</button>
+                }}>Update</button>
 
                 <h2 onClick={() => {
                     showPopup(false)

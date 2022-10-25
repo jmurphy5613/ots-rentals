@@ -46,4 +46,18 @@
 .gear-label {
     font-weight: 300;
     font-family: "Poppins", sans-serif;
+    margin-right: 0.5rem;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+}
+
+.refresh {
+    font-size: 3rem;
+    display: flex;
+    align-items: center;
+    margin-left: 0.5rem;
+    cursor: pointer;
 }

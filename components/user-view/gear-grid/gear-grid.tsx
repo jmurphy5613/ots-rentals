@@ -4,29 +4,21 @@ import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { setCartItems } from '../../../redux/features/cart';
+import { useState } from 'react';
 
+import { Gear } from '../../../utils/types';
 
-const fakeData = [
-    {
-        title: 'Sony a6000',
-        company: 'Sony',
-        price: 100,
-        image: 'https://www.dpreview.com/files/p/E~products/sony_a6000/shots/068c499f89b049b5a3d26be9510f7c27.png'
-    },
-    {
-        title: 'Canon 5D Mark IV',
-        company: 'Canon',
-        price: 100,
-        image: 'https://asia.canon/media/migration/shared/live/products/EN/eos-5d-mk-iv-ef24-70mm-b1.png'
-    }
-]
+type GearGridProps = {
+    gear: Array<Gear>
+}
 
-const GearGrid = () => {
+const GearGrid:React.FC<GearGridProps> = ({ gear }) => {
 
     const router = useRouter()
 
     const cart = useSelector((state: any) => state.cart.value)
     const dispatch = useDispatch()
+
 
 
 
@@ -39,17 +31,17 @@ const GearGrid = () => {
 
     return (
         <div className={styles["gear-grid"]}>
-            {fakeData.map((item, index) => {
+            {gear.map((item, index) => {
                 return (
                     <div key={index} className={styles["gear-card"]} onClick={() => {
                         router.push(`/gear-profiles/${index}`)
                     }}>
                         <div className={styles["image-container"]}>
-                            <img className={styles["gear-image"]} src={item.image} />
+                            <img className={styles["gear-image"]} src={item.picture} />
                         </div>
                         <div className={styles["gear-titles"]}>
                             <h4 className={styles.company}>{item.company}</h4>
-                            <h2 className={styles["gear-title-main"]}>{item.title}</h2>
+                            <h2 className={styles["gear-title-main"]}>{item.name}</h2>
                             {!inCart(index) 
                                 ? 
                                     <button className={styles["add-to-cart"]} onClick={() => {

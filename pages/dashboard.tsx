@@ -3,6 +3,7 @@ import styles from '../styles/Dashboard.module.css'
 import axios from 'axios'
 import GearGrid from '../components/dashboard/gear-grid/GearGrid'
 import EditGearPopup from '../components/dashboard/edit-gear-popup/EditGearPopup'
+import { IoMdRefreshCircle } from 'react-icons/io/index'
 
 const Dashboard = () => {
 
@@ -62,7 +63,14 @@ const Dashboard = () => {
                     setName('')
                 }}>+</div>
             </div>
-            <h1 className={styles["gear-label"]}>All Gear ({gear.length})</h1>
+            <div className={styles.title}>
+                <h1 className={styles["gear-label"]}>All Gear  ({gear.length})</h1>
+                <div className={styles.refresh}>
+                    <IoMdRefreshCircle onClick={() => {
+                        fetchGear()
+                    }} />
+                </div>
+            </div>
             <GearGrid showPopup={setShowPopup} setGearSelected={setGearSelected} gear={gear} />
             {showPopup && <EditGearPopup currentGear={gear[gearSelected]} showPopup={setShowPopup} />}
         </div>
