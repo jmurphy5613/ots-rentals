@@ -4,25 +4,6 @@ import axios from 'axios'
 import GearGrid from '../components/dashboard/gear-grid/GearGrid'
 import EditGearPopup from '../components/dashboard/edit-gear-popup/EditGearPopup'
 
-const fakeData = [
-    {
-        id: 0,
-        title: 'Sony a6000',
-        company: 'Sony',
-        price: 100,
-        image: 'https://www.dpreview.com/files/p/E~products/sony_a6000/shots/068c499f89b049b5a3d26be9510f7c27.png',
-        desciption: 'Test the limits of your creativity with the premium mirrorless DSLR that’s focused on speed. Every artistic shot you take—from fast-action to candid—benefits from 24.3MP detail and the world’s fastest auto focus6. '
-    },
-    {
-        id: 1,
-        title: 'Canon 5D Mark IV',
-        company: 'Canon',
-        price: 100,
-        image: 'https://asia.canon/media/migration/shared/live/products/EN/eos-5d-mk-iv-ef24-70mm-b1.png',
-        desciption: 'The EOS 5D Mark IV camera’s iSA (Intelligent Scene Analysis) system has a dedicated RGB+IR light sensor with an approximately 150,000-pixel resolution to determine and maintain proper exposure, especially in varying light sources with moving subjects.'
-    }
-]
-
 const Dashboard = () => {
 
     const fetchGear = () => {
@@ -51,6 +32,13 @@ const Dashboard = () => {
     const [showPopup, setShowPopup] = useState(false)
     const [gearSelected, setGearSelected] = useState<number>(-1)
 
+    useEffect(() => {
+        if(showPopup === false) {
+            fetchGear()
+            console.log('heyyyy')
+        }
+    }, [showPopup])
+
     return (
         <div className={styles.container}>
             <div className={styles['add-gear-form']}>
@@ -76,7 +64,7 @@ const Dashboard = () => {
             </div>
             <h1 className={styles["gear-label"]}>All Gear ({gear.length})</h1>
             <GearGrid showPopup={setShowPopup} setGearSelected={setGearSelected} gear={gear} />
-            {showPopup && <EditGearPopup fetchGear={fetchGear} currentGear={gear[gearSelected]} showPopup={setShowPopup} />}
+            {showPopup && <EditGearPopup currentGear={gear[gearSelected]} showPopup={setShowPopup} />}
         </div>
     )
 }
