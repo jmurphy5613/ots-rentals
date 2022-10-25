@@ -3,6 +3,7 @@
 import styles from '../../styles/GearProfiles.module.css'
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
+import { useDispatch } from 'react-redux'
 
 
 const fakeData = [
@@ -28,6 +29,9 @@ const GearProfiles = () => {
 
     const router = useRouter()
     const { id } = router.query
+
+    const cart = useSelector((state: any) => state.cart.value)
+    const dispatch = useDispatch()
 
 
     const [numberOfWeeks, setNumberOfWeeks] = useState(0)
@@ -68,6 +72,7 @@ const GearProfiles = () => {
                             <button className={styles.add} onClick={() => setNumberOfWeeks(numberOfWeeks+1)}>+</button>
                         </div>
                         <button className={styles["add-to-cart"]} onClick={() => {
+
                         }}>Add To Cart</button>  
                     </div>
 

@@ -44,11 +44,9 @@ const GearGrid:React.FC<GearGridProps> = ({ gear }) => {
                             <h2 className={styles["gear-title-main"]}>{item.name}</h2>
                             {!inCart(index) 
                                 ? 
-                                    <button className={styles["add-to-cart"]} onClick={() => {
-                                        dispatch(setCartItems({ items: cart.items.concat(index) }))
-                                    }}>Add To Cart</button> 
+                                    <button className={styles["add-to-cart"]}>In Stock</button> 
                                 : 
-                                    <button disabled className={styles["add-to-cart"]}>Add To Cart</button>
+                                    <button disabled className={styles["add-to-cart"]}>Out of Stock</button>
                             }
                         </div>
                     </div>
