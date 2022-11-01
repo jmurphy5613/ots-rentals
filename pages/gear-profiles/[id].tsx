@@ -3,33 +3,14 @@
 import styles from '../../styles/GearProfiles.module.css'
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { setCartItems } from '../../redux/features/cart'
+import axios from 'axios'
 
-
-const fakeData = [
-    {
-        id: 0,
-        title: 'Sony a6000',
-        company: 'Sony',
-        price: 100,
-        image: '/cam2.png',
-        desciption: 'Test the limits of your creativity with the premium mirrorless DSLR that’s focused on speed. Every artistic shot you take—from fast-action to candid—benefits from 24.3MP detail and the world’s fastest auto focus6. '
-    },
-    {
-        id: 1,
-        title: 'Canon 5D Mark IV',
-        company: 'Canon',
-        price: 100,
-        image: '/cam1.png',
-        desciption: 'The EOS 5D Mark IV camera’s iSA (Intelligent Scene Analysis) system has a dedicated RGB+IR light sensor with an approximately 150,000-pixel resolution to determine and maintain proper exposure, especially in varying light sources with moving subjects.'
-    }
-]
 
 const GearProfiles = () => {
 
     const router = useRouter()
-    const { id } = router.query
-
     const cart = useSelector((state: any) => state.cart.value)
     const dispatch = useDispatch()
 
@@ -38,16 +19,22 @@ const GearProfiles = () => {
 
     const [currentCamera, setCurrentCamera] = useState({
         id: 0,
-        title: '',
+        name: '',
         company: '',
         price: 0,
         image: '',
-        descirption: ''
+        descirption: '',
+        picture: ''
     })
 
     useEffect(() => {
         const { id } = router.query
-        setCurrentCamera(fakeData[id])
+        if(!id) return;
+
+        axios.get(`http://localhost:3002/gear/get-by-id/${id}`).then(e => {
+            setCurrentCamera(e.data)
+        })
+
     }, [router.isReady])
 
     if(!currentCamera) return <div></div>
@@ -57,13 +44,13 @@ const GearProfiles = () => {
             <div className={styles.container}>
                 <div className={styles.images}>
                     <div className={styles["image-container"]}>
-                        {id === 0 ? <img className={styles["current-image"]} src="/cam2.png" /> : <img className={styles["current-image"]} src="/cam1.png" />}
+                        <img className={styles["current-image"]} src={currentCamera.picture} /> 
                     </div>
                 </div>
                 <div className={styles.description}>
                     <h3 className={styles.company}>{currentCamera.company}</h3>
-                    <h1 className={styles.title}>{currentCamera.title}</h1>
-                    <h4 className={styles["item-description"]}>{currentCamera.desciption}</h4>
+                    <h1 className={styles.title}>{currentCamera.name}</h1>
+                    <h4 className={styles["item-description"]}>{currentCamera.description}</h4>
                     <h2 className={styles.price}>${currentCamera.price}/week</h2>
                     <div style={{ display: 'flex' }}>
                         <div className={styles["quantity-select"]}>
@@ -72,6 +59,22 @@ const GearProfiles = () => {
                             <button className={styles.add} onClick={() => setNumberOfWeeks(numberOfWeeks+1)}>+</button>
                         </div>
                         <button className={styles["add-to-cart"]} onClick={() => {
+
+                            /* 
+                            Cart items will follow this format:
+                            {
+                                id:
+                                name:
+                                number of weeks:
+                            }
+                            */
+                            const currentItems:Array<Object> = cart.items
+                            const currentItem = {
+                                id: currentCamera.id,
+                                name: currentCamera,
+                                numberOfWeeks: numberOfWeeks
+                            }
+                            dispatch(setCartItems({ items: [...currentItems, currentItem] }))
 
                         }}>Add To Cart</button>  
                     </div>

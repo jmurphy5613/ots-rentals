@@ -34,7 +34,7 @@ const GearGrid:React.FC<GearGridProps> = ({ gear }) => {
             {gear.map((item, index) => {
                 return (
                     <div key={index} className={styles["gear-card"]} onClick={() => {
-                        router.push(`/gear-profiles/${index}`)
+                        router.push(`/gear-profiles/${item.id}`)
                     }}>
                         <div className={styles["image-container"]}>
                             <img className={styles["gear-image"]} src={item.picture} />
