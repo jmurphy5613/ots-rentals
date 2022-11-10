@@ -9,3 +9,8 @@ export type Gear = {
     name: string,
     price: string
 }
+
+export type CartGear = {
+    gear: Gear
+    numberOfWeeks: number
+}

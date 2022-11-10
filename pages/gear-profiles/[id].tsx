@@ -60,6 +60,8 @@ const GearProfiles = () => {
                         </div>
                         <button className={styles["add-to-cart"]} onClick={() => {
 
+                            if(numberOfWeeks === 0) return;
+
                             /* 
                             Cart items will follow this format:
                             {
@@ -70,8 +72,7 @@ const GearProfiles = () => {
                             */
                             const currentItems:Array<Object> = cart.items
                             const currentItem = {
-                                id: currentCamera.id,
-                                name: currentCamera,
+                                gear: currentCamera,
                                 numberOfWeeks: numberOfWeeks
                             }
                             dispatch(setCartItems({ items: [...currentItems, currentItem] }))

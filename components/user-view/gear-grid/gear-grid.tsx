@@ -3,8 +3,6 @@ import { useRouter } from 'next/router';
 
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { setCartItems } from '../../../redux/features/cart';
-import { useState } from 'react';
 
 import { Gear } from '../../../utils/types';
 
