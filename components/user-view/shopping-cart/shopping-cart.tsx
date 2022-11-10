@@ -1,6 +1,8 @@
 import styles from './shopping-cart.module.css'
 import { useSelector } from 'react-redux'
 import { CartGear } from '../../../utils/types'
+import { useDispatch } from 'react-redux'
+import { setCartItems } from '../../../redux/features/cart'
 
 type shoppingCartProps = {
     setShowCart: (value: boolean) => void
@@ -9,8 +11,15 @@ type shoppingCartProps = {
 const ShoppingCart:React.FC<shoppingCartProps> = ({setShowCart}) => {
 
     const cart = useSelector((state: any) => state.cart.value)
+    const dispatch = useDispatch()
     console.log(cart)
 
+    const removeCartItemById = (index:number) => {
+        const currentCartItems = cart.items
+        const copy = [...currentCartItems]
+        copy.splice(index, 1)
+        dispatch(setCartItems({items: copy }))
+    }   
 
     return (
         <div className={styles.cart}>
@@ -27,7 +36,9 @@ const ShoppingCart:React.FC<shoppingCartProps> = ({setShowCart}) => {
                         <div className={styles["gear-item"]}>
                             <img className={styles.preview} src={element.gear.picture} />
                             <h3 className={styles.name}>{element.gear.name}</h3>
-                            <h4 className={styles.remove}>x</h4>
+                            <h4 className={styles.remove} onClick={() => {
+                                removeCartItemById(index)
+                            }}>x</h4>
                         </div>
                     )
                 })}
