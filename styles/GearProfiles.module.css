@@ -7,8 +7,8 @@
 
 .images {
     width: 50%;
-    height: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -19,7 +19,6 @@
     flex-direction: column;
     justify-content: center;
     width: 50%;
-    height: 100%;
 }
 
 .image-container {
@@ -107,4 +106,15 @@
     align-items: center;
     cursor: pointer;
     margin-left: 2rem;
+}
+
+.back {
+    font-weight: 300;
+    font-family: "Poppins", sans-serif;
+    position: absolute;
+    left: calc((50vw - 500px) / 2);
+    cursor: pointer;
+}
+.back:hover {
+    color: brown;
 }
