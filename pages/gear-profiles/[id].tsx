@@ -43,7 +43,7 @@ const GearProfiles = () => {
         <>
             <h2 className={styles.back} onClick={() => {
                 router.push('/search')
-            }}>{`<- Other Gear`}</h2>
+            }}>{`<- Search`}</h2>
             <div className={styles.container}>
                 <div className={styles.images}>
                     <div className={styles["image-container"]}>

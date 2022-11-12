@@ -3,12 +3,15 @@ import { useSelector } from 'react-redux'
 import { CartGear } from '../../../utils/types'
 import { useDispatch } from 'react-redux'
 import { setCartItems } from '../../../redux/features/cart'
+import { useRouter } from 'next/router'
 
 type shoppingCartProps = {
     setShowCart: (value: boolean) => void
 }
 
 const ShoppingCart:React.FC<shoppingCartProps> = ({setShowCart}) => {
+
+    const router = useRouter()
 
     const cart = useSelector((state: any) => state.cart.value)
     const dispatch = useDispatch()
@@ -34,7 +37,7 @@ const ShoppingCart:React.FC<shoppingCartProps> = ({setShowCart}) => {
                     return (
                         <div className={styles["gear-item"]}>
                             <img className={styles.preview} src={element.gear.picture} />
-                            <h3 className={styles.name}>{element.gear.name}</h3>
+                            <h3 className={styles.name}>{element.gear.name} ({element.numberOfWeeks} weeks)</h3>
                             <h4 className={styles.remove} onClick={() => {
                                 removeCartItemById(index)
                             }}>x</h4>
@@ -43,7 +46,10 @@ const ShoppingCart:React.FC<shoppingCartProps> = ({setShowCart}) => {
                 })}
 
                 <div className={styles.bottom}>
-                    <button className={styles.checkout}>Go To Checkout</button>
+                    <button className={styles.checkout} onClick={() => {
+                        router.push('/checkout')
+                        setShowCart(false)
+                    }}>Go To Checkout</button>
                 </div>
             </div>
         </div>
