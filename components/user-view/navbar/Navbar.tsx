@@ -1,13 +1,21 @@
 import styles from './Navbar.module.css'
 import { BsCartFill } from 'react-icons/bs'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import ShoppingCart from '../shopping-cart/shopping-cart'
+import { useRouter } from 'next/router'
 
 import { useSelector } from 'react-redux'
 
 const Navbar = () => {
 
     const [showCart, setShowCart] = useState(false)
+
+    const router = useRouter()
+
+    useEffect(() => {
+        const cartItems = localStorage.getItem('items')
+        console.log(cartItems)
+    }, [router.isReady])
 
     const cart = useSelector((state:any) => state.cart.value)
 

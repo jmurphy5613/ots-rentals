@@ -2,28 +2,24 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import Navbar from '../components/user-view/navbar/Navbar'
 
-import { configureStore } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
-import cartReducer from '../redux/features/cart'
-
 import { useRouter } from 'next/router'
+import { PersistGate } from 'redux-persist/integration/react'
+
+import { store, persistedStore } from '../redux/store'
 
 function MyApp({ Component, pageProps }: AppProps) {
 
-
-  const store = configureStore({
-    reducer: {
-      cart: cartReducer
-    }
-  })
 
   const router = useRouter()
 
   return (
     <>
       <Provider store={store}>
-        { router.pathname !== '/login' && router.pathname !== '/dashboard' && <Navbar />}
-        <Component {...pageProps} />
+        <PersistGate loading={null} persistor={persistedStore}>
+          { router.pathname !== '/login' && router.pathname !== '/dashboard' && <Navbar />}
+          <Component {...pageProps} />
+        </PersistGate>
       </Provider>
     </>    
   )

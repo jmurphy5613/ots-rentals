@@ -13,7 +13,6 @@ const Search = () => {
     const fetchData = () => {
         axios.get('http://localhost:3002/gear/get-all').then(e => {
             setGear(e.data)
-            console.log(e.data)
         })
     }
 

@@ -10,7 +10,6 @@ const Dashboard = () => {
     const fetchGear = () => {
         axios.get('http://localhost:3002/gear/get-all').then(e => {
             setGear(e.data)
-            console.log(e.data)
         })
     }
 
@@ -36,7 +35,6 @@ const Dashboard = () => {
     useEffect(() => {
         if(showPopup === false) {
             fetchGear()
-            console.log('heyyyy')
         }
     }, [showPopup])
 

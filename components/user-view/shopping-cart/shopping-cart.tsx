@@ -12,7 +12,6 @@ const ShoppingCart:React.FC<shoppingCartProps> = ({setShowCart}) => {
 
     const cart = useSelector((state: any) => state.cart.value)
     const dispatch = useDispatch()
-    console.log(cart)
 
     const removeCartItemById = (index:number) => {
         const currentCartItems = cart.items
