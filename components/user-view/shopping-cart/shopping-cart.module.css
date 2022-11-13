@@ -1,5 +1,5 @@
 .cart {
-    height: 300px;
+    min-height: 100px;
     width: 350px;
     background-color: #2f3135;
     position: absolute;
@@ -7,6 +7,7 @@
     right: 0;
     border-radius: 1rem;
     z-index: 2;
+    overflow-y: auto;
 }
 
 .content {
@@ -46,8 +47,9 @@
     border-radius: 1rem;
     background-color: brown;
     font-family: "Poppins", sans-serif;
-    position: absolute;
     bottom: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
 }
 
 .gear-item {

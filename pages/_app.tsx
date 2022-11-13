@@ -8,6 +8,9 @@ import { PersistGate } from 'redux-persist/integration/react'
 
 import { store, persistedStore } from '../redux/store'
 
+import { UserProvider } from '@auth0/nextjs-auth0'
+
+
 function MyApp({ Component, pageProps }: AppProps) {
 
 
@@ -15,12 +18,14 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistedStore}>
-          { router.pathname !== '/login' && router.pathname !== '/dashboard' && <Navbar />}
-          <Component {...pageProps} />
-        </PersistGate>
-      </Provider>
+      <UserProvider>
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistedStore}>
+            { router.pathname !== '/login' && router.pathname !== '/dashboard' && <Navbar />}
+            <Component {...pageProps} />
+          </PersistGate>
+        </Provider>
+      </UserProvider>
     </>    
   )
 }

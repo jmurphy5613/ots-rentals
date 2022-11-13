@@ -47,7 +47,7 @@ const ShoppingCart:React.FC<shoppingCartProps> = ({setShowCart}) => {
 
                 <div className={styles.bottom}>
                     <button className={styles.checkout} onClick={() => {
-                        router.push('/checkout')
+                        router.push('/api/auth/login')
                         setShowCart(false)
                     }}>Go To Checkout</button>
                 </div>
