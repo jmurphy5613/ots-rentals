@@ -63,7 +63,7 @@ const Dashboard = () => {
                 }}>+</div>
             </div>
             <div className={styles.title}>
-                <h1 className={styles["gear-label"]}>All Gear  ({gear.length})</h1>
+                <h1 className={styles["gear-label"]}>Gear  ({gear.length})</h1>
                 <div className={styles.refresh}>
                     <IoMdRefreshCircle onClick={() => {
                         fetchGear()

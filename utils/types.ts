@@ -1,3 +1,4 @@
+
 export type Gear = {
     id: string,
     picture: string,
@@ -13,4 +14,9 @@ export type Gear = {
 export type CartGear = {
     gear: Gear
     numberOfWeeks: number
+}
+
+export type User = {
+    email: string,
+    name: string
 }

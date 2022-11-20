@@ -1,13 +1,27 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './UserManager.module.css'
+import axios from 'axios'
+import { User } from '../../../utils/types'
+import UserGrid from '../user-grid/UserGrid'
 
 
 const UserManagement = () => {
 
-    const [email, setEmail] = useState('')
-    const [name, setName] = useState('')
+    const [email, setEmail] = useState<string>()
+    const [name, setName] = useState<string>()
 
-    
+    const [users, setUsers] = useState<Array<User>>([])
+
+    const getUsers = () => {
+        axios.get('http://localhost:3002/user/get-all').then(res => {
+            setUsers(res.data)
+            console.log(res.data)
+        })
+    }
+
+    useEffect(() => {
+        getUsers()
+    }, [])
 
     return (
         <div className={styles.container}>
@@ -19,10 +33,17 @@ const UserManagement = () => {
                     setName(e.target.value)
                 }} />
                 <div className={styles.add} onClick={() => {
+                    axios.post('http://localhost:3002/user/add', {
+                        email: email,
+                        name: name
+                    })
 
+                    getUsers()
                 }}>+</div>
             </div>
+            <h1 className={styles["user-counter"]}>Users ({users.length})</h1>
 
+            <UserGrid users={users} />
         </div>
     )
 }
