@@ -4,6 +4,7 @@ import axios from 'axios'
 import GearGrid from '../components/dashboard/gear-grid/GearGrid'
 import EditGearPopup from '../components/dashboard/edit-gear-popup/EditGearPopup'
 import { IoMdRefreshCircle } from 'react-icons/io/index'
+import UserManagement from '../components/dashboard/user-manager/UserManager'
 
 const Dashboard = () => {
 
@@ -71,6 +72,8 @@ const Dashboard = () => {
             </div>
             <GearGrid showPopup={setShowPopup} setGearSelected={setGearSelected} gear={gear} />
             {showPopup && <EditGearPopup currentGear={gear[gearSelected]} showPopup={setShowPopup} />}
+
+            <UserManagement />
         </div>
     )
 }

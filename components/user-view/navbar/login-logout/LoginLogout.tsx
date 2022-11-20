@@ -9,17 +9,17 @@ const LoginLogout = () => {
     const router = useRouter()
 
     return (
-        <div>
+        <div className={styles["login-logout-container"]}>
             {user 
                 ? 
-                    <div>
+                    <>
                         <h2 className={styles.username}>{user.name}</h2>
-                        <button onClick={() => {
+                        <button className={styles["auth-button"]} onClick={() => {
                             router.push('/api/auth/logout')
                         }}>Logout</button> 
-                    </div>
+                    </>
                 : 
-                    <button onClick={() => {
+                    <button className={styles["auth-button"]} onClick={() => {
                         router.push('/api/auth/login')
                     }}>Login</button>
             }            
