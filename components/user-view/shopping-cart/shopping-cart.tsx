@@ -4,12 +4,15 @@ import { CartGear } from '../../../utils/types'
 import { useDispatch } from 'react-redux'
 import { setCartItems } from '../../../redux/features/cart'
 import { useRouter } from 'next/router'
+import { useUser } from '@auth0/nextjs-auth0';
 
 type shoppingCartProps = {
     setShowCart: (value: boolean) => void
 }
 
 const ShoppingCart:React.FC<shoppingCartProps> = ({setShowCart}) => {
+
+    const { user } = useUser()
 
     const router = useRouter()
 
@@ -47,7 +50,11 @@ const ShoppingCart:React.FC<shoppingCartProps> = ({setShowCart}) => {
 
                 <div className={styles.bottom}>
                     <button className={styles.checkout} onClick={() => {
-                        router.push('/api/auth/login')
+
+                        //check if someone is already logged in
+                        if(user) router.push('/checkout')
+                        else router.push('/api/auth/login')
+
                         setShowCart(false)
                     }}>Go To Checkout</button>
                 </div>

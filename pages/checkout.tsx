@@ -26,10 +26,12 @@ const Checkout = () => {
             }}>{`<- Other Gear`}</h2>
             <h1 className={styles["items-label"]}>Items ({cart.items.length})</h1>
             <CheckoutGrid gear={createGearArray()} />
-            <div className={styles["code-container"]}>
+
+            
+            {/* <div className={styles["code-container"]}>
                 <input className={styles.code} placeholder="Enter Code" />
                 <button className={styles.redeem}>Redeem</button>
-            </div>
+            </div> */}
         </div>
     )
 }
