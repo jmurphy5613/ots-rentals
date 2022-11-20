@@ -4,11 +4,10 @@ import { useEffect, useState } from 'react'
 import ShoppingCart from '../shopping-cart/shopping-cart'
 import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
-import { useUser } from '@auth0/nextjs-auth0'
+import LoginLogout from './login-logout/LoginLogout'
 
 const Navbar = () => {
 
-    const { user } = useUser()
 
     const [showCart, setShowCart] = useState(false)
 
@@ -26,22 +25,7 @@ const Navbar = () => {
             <div className={styles["main-content-left"]}>
                 <img src='/logo.png' className={styles.logo} />
                 <div className={styles["right-container"]}>
-                    
-                    {user 
-                    ? 
-                        <div>
-                            <h2 className={styles.username}>{user.name}</h2>
-                            <button onClick={() => {
-                                router.push('/api/auth/logout')
-                            }}>Logout</button> 
-                        </div>
-                    : 
-                        <button onClick={() => {
-                            router.push('/api/auth/login')
-                        }}>Login</button>
-                    }
-
-
+                    <LoginLogout />
                     <div className={styles["cart-container"]}>
                         <BsCartFill className={styles.cart} onClick={() => {
                             setShowCart(true)
