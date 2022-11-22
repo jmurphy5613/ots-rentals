@@ -48,3 +48,9 @@
     font-family: "Poppins", sans-serif;
     cursor: pointer;
 }
+
+.warning {
+    color: brown;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+}
