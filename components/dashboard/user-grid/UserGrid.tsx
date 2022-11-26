@@ -7,6 +7,11 @@ type UserGridProps = {
 }
 
 const UserGrid:React.FC<UserGridProps> = ({ users }) => {
+
+    const deleteUserById = (index:number) => {
+        
+    }
+
     return (
         <div className={styles.grid}>
             {users.map((element:User, index) => {

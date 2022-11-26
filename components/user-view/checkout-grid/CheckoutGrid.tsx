@@ -1,11 +1,11 @@
 import styles from './CheckoutGrid.module.css'
-import { Gear } from '../../../utils/types'
+import { CartGear } from '../../../utils/types'
 import { useDispatch, useSelector } from 'react-redux'
 import { setCartItems } from '../../../redux/features/cart'
 
 
 type CheckoutGrid = {
-    gear: Array<Gear>,
+    gear: Array<CartGear>,
 }
 
 const CheckoutGrid:React.FC<CheckoutGrid> = ({ gear }) => {
@@ -24,7 +24,7 @@ const CheckoutGrid:React.FC<CheckoutGrid> = ({ gear }) => {
 
     return (
         <div className={styles.grid}>
-            {gear.map((element:Gear, index:number) => {
+            {gear.map((element:CartGear, index:number) => {
                 return (
                     <div className={styles["grid-item"]}>
                         <div onClick={() => {
@@ -32,8 +32,9 @@ const CheckoutGrid:React.FC<CheckoutGrid> = ({ gear }) => {
                         }} className={styles["red-circle"]}>
                             <h2 className={styles.x}>x</h2>
                         </div>
-                        <img className={styles.image} src={element.picture} />
-                        <h3 className={styles.name}>{element.name}</h3>
+                        <img className={styles.image} src={element.gear.picture} />
+                        <h3 className={styles.name}>{element.gear.name}</h3>
+                        <h4 className={styles.weeks}>{element.numberOfWeeks} week</h4>
                         {/* <div className={styles["quantity-select"]}>
                             <button className={styles.subtract}>-</button>
                             <h4 className={styles.number}>1</h4>

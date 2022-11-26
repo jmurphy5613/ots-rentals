@@ -86,3 +86,9 @@
     border-bottom-left-radius: 0.5rem;
     cursor: pointer;
 }
+
+.weeks {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+}

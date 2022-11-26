@@ -1,7 +1,7 @@
 import styles from '../styles/Checkout.module.css'
 import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
-import { Gear, User } from '../utils/types'
+import { CartGear } from '../utils/types'
 import CheckoutGrid from '../components/user-view/checkout-grid/CheckoutGrid'
 import { useUser } from '@auth0/nextjs-auth0'
 import axios from 'axios'
@@ -19,9 +19,9 @@ const Checkout = () => {
     const cart = useSelector((state: any) => state.cart.value)
 
     const createGearArray = () => {
-        const gear:Array<Gear> = []
+        const gear:Array<CartGear> = []
         for(const items of cart.items) {
-            gear.push(items.gear)
+            gear.push(items)
         }
         return gear
     }
@@ -38,7 +38,6 @@ const Checkout = () => {
         if(!user) return
         axios.get(`http://localhost:3002/user/get-by-email/${user.email}`).then(res => {
             if(res.data) {
-                console.log("hey")
                 setIsAuthorized(true)
             }
         })
