@@ -6,6 +6,7 @@ import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from 'react-redux'
 import { setCartItems } from '../../redux/features/cart'
 import axios from 'axios'
+import { Gear } from '../../utils/types'
 
 
 const GearProfiles = () => {
@@ -17,15 +18,8 @@ const GearProfiles = () => {
 
     const [numberOfWeeks, setNumberOfWeeks] = useState(0)
 
-    const [currentCamera, setCurrentCamera] = useState({
-        id: 0,
-        name: '',
-        company: '',
-        price: 0,
-        image: '',
-        descirption: '',
-        picture: ''
-    })
+    const [currentCamera, setCurrentCamera] = useState<Gear>()
+
 
     useEffect(() => {
         const { id } = router.query
@@ -38,6 +32,8 @@ const GearProfiles = () => {
     }, [router.isReady])
 
     if(!currentCamera) return <div></div>
+
+    console.log(currentCamera.checkoutDate, currentCamera.returnDate, currentCamera.checkoutDate - currentCamera.returnDate, currentCamera.returnDate - Date.now())
 
     return (
         <>
@@ -61,26 +57,30 @@ const GearProfiles = () => {
                             <h4 className={styles.number}>{numberOfWeeks}</h4>
                             <button className={styles.add} onClick={() => setNumberOfWeeks(numberOfWeeks+1)}>+</button>
                         </div>
-                        <button className={styles["add-to-cart"]} onClick={() => {
+                        {currentCamera.returnDate < Date.now() ? 
+                            <button className={styles["add-to-cart"]} onClick={() => {
 
-                            if(numberOfWeeks === 0) return;
+                                if(numberOfWeeks === 0) return;
 
-                            /* 
-                            Cart items will follow this format:
-                            {
-                                id:
-                                name:
-                                number of weeks:
-                            }
-                            */
-                            const currentItems:Array<Object> = cart.items
-                            const currentItem = {
-                                gear: currentCamera,
-                                numberOfWeeks: numberOfWeeks
-                            }
-                            dispatch(setCartItems({ items: [...currentItems, currentItem] }))
+                                /* 
+                                Cart items will follow this format:
+                                {
+                                    id:
+                                    name:
+                                    number of weeks:
+                                }
+                                */
+                                const currentItems:Array<Object> = cart.items
+                                const currentItem = {
+                                    gear: currentCamera,
+                                    numberOfWeeks: numberOfWeeks
+                                }
+                                dispatch(setCartItems({ items: [...currentItems, currentItem] }))
 
-                        }}>Add To Cart</button>  
+                            }}>Add To Cart</button> 
+                        :
+                            <button className={styles["add-to-cart"]} disabled>Out of Stock</button>    
+                        } 
                     </div>
 
                 </div>

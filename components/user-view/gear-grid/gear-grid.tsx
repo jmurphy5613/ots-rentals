@@ -15,10 +15,6 @@ const GearGrid:React.FC<GearGridProps> = ({ gear }) => {
     const router = useRouter()
 
     const cart = useSelector((state: any) => state.cart.value)
-    const dispatch = useDispatch()
-
-
-
 
     const inCart = (index:number) => {
         for(const item of cart.items) {
@@ -40,7 +36,7 @@ const GearGrid:React.FC<GearGridProps> = ({ gear }) => {
                         <div className={styles["gear-titles"]}>
                             <h4 className={styles.company}>{item.company}</h4>
                             <h2 className={styles["gear-title-main"]}>{item.name}</h2>
-                            {!inCart(index) 
+                            {item.returnDate < Date.now()
                                 ? 
                                     <button className={styles["add-to-cart"]}>In Stock</button> 
                                 : 

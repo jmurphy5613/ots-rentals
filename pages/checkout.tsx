@@ -39,7 +39,7 @@ const Checkout = () => {
                     description: item.gear.description,
                     currentUserEmail: user?.email,
                     checkoutDate: Date.now(),
-                    returnDate: (604800*item.numberOfWeeks)+Date.now()
+                    returnDate: (604800000*item.numberOfWeeks)+Date.now()
                 })
             }
         }
