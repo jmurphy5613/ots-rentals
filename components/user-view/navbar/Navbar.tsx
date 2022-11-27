@@ -5,6 +5,7 @@ import ShoppingCart from '../shopping-cart/shopping-cart'
 import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
 import LoginLogout from './login-logout/LoginLogout'
+import ViewInvesntoryButton from './view-inventory-button/ViewInventoryButton'
 
 const Navbar = () => {
 
@@ -26,6 +27,7 @@ const Navbar = () => {
                 <img src='/logo.png' className={styles.logo} />
                 <div className={styles["right-container"]}>
                     <LoginLogout />
+                    <ViewInvesntoryButton />
                     <div className={styles["cart-container"]}>
                         <BsCartFill className={styles.cart} onClick={() => {
                             setShowCart(true)
