@@ -6,7 +6,7 @@ export type Gear = {
     description: string,
     currentUserEmail: string,
     checkoutDate: number,
-    returnDate: string,
+    returnDate: number,
     name: string,
     price: string
 }

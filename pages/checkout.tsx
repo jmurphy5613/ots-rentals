@@ -30,7 +30,18 @@ const Checkout = () => {
         const gear = createGearArray()
 
         for(const item of gear) {
-            console.log(item)
+            if(item.gear.returnDate < Date.now()) {
+                axios.post(`http://localhost:3002/gear/update/${item.gear.id}`, {
+                    price: item.gear.price,
+                    picture: item.gear.picture,
+                    company: item.gear.company,
+                    name: item.gear.name,
+                    description: item.gear.description,
+                    currentUserEmail: user?.email,
+                    checkoutDate: Date.now(),
+                    returnDate: (604800*item.numberOfWeeks)+Date.now()
+                })
+            }
         }
     }
 

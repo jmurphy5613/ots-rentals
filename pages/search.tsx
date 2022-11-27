@@ -30,7 +30,7 @@ const Search = () => {
                 <input className={styles.search} placeholder='Search all camera gear rentals' onChange={(e) => {
                     setSearchValue(e.target.value.toLocaleLowerCase())
                 }} />
-                <h2 className={styles["result-count"]}>All (2)</h2>
+                <h2 className={styles["result-count"]}>All ({filteredGear.length})</h2>
                 <GearGrid gear={filteredGear} />
             </div>
         </>
