@@ -15,7 +15,6 @@ const UserManagement = () => {
     const getUsers = () => {
         axios.get('http://localhost:3002/user/get-all').then(res => {
             setUsers(res.data)
-            console.log(res.data)
         })
     }
 

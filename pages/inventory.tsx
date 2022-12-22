@@ -4,10 +4,13 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import GearGrid from '../components/user-view/gear-grid/gear-grid'
 import { Gear } from '../utils/types'
+import { useRouter } from 'next/router'
 
 const Inventory = () => {
 
     const { user, isLoading } = useUser()
+
+    const router = useRouter()
 
     const [checkoutGear, setCheckedoutGear] = useState<Array<Gear>>([])
 
@@ -22,10 +25,16 @@ const Inventory = () => {
 
     return (
         <div className={styles.container}>
+            <h2
+                className={styles.back}
+                onClick={() => {
+                    router.push("/search");
+                }}
+            >{`<- Other Gear`}</h2>
             <h1 className={styles.title}>Your gear ({checkoutGear.length})</h1>
             <GearGrid gear={checkoutGear} />
         </div>
-    )
+    );
 }
 
 export default Inventory

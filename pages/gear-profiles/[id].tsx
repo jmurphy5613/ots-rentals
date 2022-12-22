@@ -33,8 +33,6 @@ const GearProfiles = () => {
 
     if(!currentCamera) return <div></div>
 
-    console.log(currentCamera.checkoutDate, currentCamera.returnDate, currentCamera.checkoutDate - currentCamera.returnDate, currentCamera.returnDate - Date.now())
-
     return (
         <>
             <h2 className={styles.back} onClick={() => {

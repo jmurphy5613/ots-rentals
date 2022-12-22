@@ -12,3 +12,15 @@
     font-weight: 500;
     margin-top: 4rem;
 }
+
+.back {
+    font-weight: 300;
+    font-family: "Poppins", sans-serif;
+    position: absolute;
+    left: 7.5vw;
+    cursor: pointer;
+    transform: translateX(50%);
+}
+.back:hover {
+    color: brown;
+}

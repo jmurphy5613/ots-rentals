@@ -16,7 +16,6 @@ const Navbar = () => {
 
     useEffect(() => {
         const cartItems = localStorage.getItem('items')
-        console.log(cartItems)
     }, [router.isReady])
 
     const cart = useSelector((state:any) => state.cart.value)
@@ -24,7 +23,9 @@ const Navbar = () => {
     return (
         <div className={styles.container}>
             <div className={styles["main-content-left"]}>
-                <img src='/logo.png' className={styles.logo} />
+                <img src='/logo.png' className={styles.logo} onClick={() => {
+                    router.push('/')
+                }} />
                 <div className={styles["right-container"]}>
                     <LoginLogout />
                     <ViewInvesntoryButton />
