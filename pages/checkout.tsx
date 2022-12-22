@@ -1,11 +1,12 @@
 import styles from '../styles/Checkout.module.css'
 import { useRouter } from 'next/router'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { CartGear } from '../utils/types'
 import CheckoutGrid from '../components/user-view/checkout-grid/CheckoutGrid'
 import { useUser } from '@auth0/nextjs-auth0'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { setCartItems } from '../redux/features/cart'
 
 
 const Checkout = () => {
@@ -16,6 +17,7 @@ const Checkout = () => {
 
     const router = useRouter()
 
+    const dispatch = useDispatch()
     const cart = useSelector((state: any) => state.cart.value)
 
     const createGearArray = () => {
@@ -24,6 +26,14 @@ const Checkout = () => {
             gear.push(items)
         }
         return gear
+    }
+
+    const clearGear = () => {
+        dispatch(setCartItems({ items: [] }));
+    }
+
+    const pushToInventory = () => {
+        router.push('/inventory')
     }
 
     const handleOrders = () => {
@@ -71,6 +81,8 @@ const Checkout = () => {
                     <div className={styles["code-container"]}>
                         <button onClick={() => {
                             handleOrders()
+                            clearGear()
+                            setTimeout(() => pushToInventory(), 500)
                         }} className={styles.redeem}>Checkout</button>
                     </div> 
                 :
