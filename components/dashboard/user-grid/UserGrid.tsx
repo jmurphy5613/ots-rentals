@@ -16,7 +16,7 @@ const UserGrid:React.FC<UserGridProps> = ({ users }) => {
         <div className={styles.grid}>
             {users.map((element:User, index) => {
                 return (
-                    <div className={styles.user}>
+                    <div key={index} className={styles.user}>
                         <div className={styles["remove-background"]}>
                             <h4 className={styles.remove}>x</h4>
                         </div>

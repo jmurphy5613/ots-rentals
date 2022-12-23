@@ -38,7 +38,7 @@ const ShoppingCart:React.FC<shoppingCartProps> = ({setShowCart}) => {
 
                 {cart.items.map((element:CartGear, index:number) => {
                     return (
-                        <div className={styles["gear-item"]}>
+                        <div key={index} className={styles["gear-item"]}>
                             <img className={styles.preview} src={element.gear.picture} />
                             <h3 className={styles.name}>{element.gear.name} ({element.numberOfWeeks} weeks)</h3>
                             <h4 className={styles.remove} onClick={() => {

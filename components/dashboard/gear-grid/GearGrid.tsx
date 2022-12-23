@@ -14,7 +14,7 @@ const GearGrid:React.FC<GearGridProps> = ({ gear, setGearSelected, showPopup }) 
         <div className={styles.grid}>
             {gear.map((element:Gear, index) => {
                 return (
-                    <div className={styles["grid-item"]}>
+                    <div key={index} className={styles["grid-item"]}>
                         <div className={styles.edit} onClick={() => {
                             setGearSelected(index)
                             showPopup(true)
