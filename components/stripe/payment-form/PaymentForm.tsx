@@ -76,12 +76,11 @@ const PaymentForm = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <fieldset className="FormGroup">
-                <div className="FormRow">
-                    <CardElement options={CARD_OPTIONS} />
+            <fieldset className={styles.FormGroup}>
+                <div className={styles.FormRow}>
+                    <CardElement className={styles.StripeElement} options={CARD_OPTIONS} />
                 </div>
             </fieldset>
-            <button>Pay</button>
         </form>
     )
 }

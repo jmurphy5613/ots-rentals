@@ -7,6 +7,7 @@ import { useUser } from "@auth0/nextjs-auth0";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { setCartItems } from "../redux/features/cart";
+import StripeContainer from "../components/stripe/stripe-container/StripeContainer";
 
 const Checkout = () => {
     const { user, isLoading } = useUser();
@@ -82,19 +83,22 @@ const Checkout = () => {
             </h1>
             <CheckoutGrid gear={createGearArray()} />
 
+
             {isAuthorized ? (
-                <div className={styles["code-container"]}>
-                    <button
-                        onClick={() => {
-                            handleOrders();
-                            clearGear();
-                            setTimeout(() => pushToInventory(), 500);
-                        }}
-                        className={styles.redeem}
-                    >
-                        Checkout
-                    </button>
-                </div>
+                <StripeContainer />
+
+                // <div className={styles["code-container"]}>
+                //     <button
+                //         onClick={() => {
+                //             handleOrders();
+                //             clearGear();
+                //             setTimeout(() => pushToInventory(), 500);
+                //         }}
+                //         className={styles.redeem}
+                //     >
+                //         Checkout
+                //     </button>
+                // </div>
             ) : (
                 <h2 className={styles.warning}>
                     You are not permited to checkout these items.
