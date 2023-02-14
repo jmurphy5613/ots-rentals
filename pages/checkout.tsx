@@ -40,7 +40,7 @@ const Checkout = () => {
         for (const item of gear) {
             if (item.gear.returnDate < Date.now()) {
                 axios.post(
-                    `http://https://ots-rentals-server-production.up.railway.app/gear/update/${item.gear.id}`,
+                    `http://localhost:3002/gear/update/${item.gear.id}`,
                     {
                         price: item.gear.price,
                         picture: item.gear.picture,
@@ -59,9 +59,7 @@ const Checkout = () => {
     useEffect(() => {
         if (!user) return;
         axios
-            .get(
-                `http://https://ots-rentals-server-production.up.railway.app/user/get-by-email/${user.email}`
-            )
+            .get(`http://localhost:3002/user/get-by-email/${user.email}`)
             .then((res) => {
                 if (res.data) {
                     setIsAuthorized(true);

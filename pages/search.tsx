@@ -9,13 +9,9 @@ const Search = () => {
     const [searchValue, setSearchValue] = useState<string>("");
 
     const fetchData = () => {
-        axios
-            .get(
-                "http://https://ots-rentals-server-production.up.railway.app/gear/get-all"
-            )
-            .then((e) => {
-                setGear(e.data);
-            });
+        axios.get("http://localhost:3002/gear/get-all").then((e) => {
+            setGear(e.data);
+        });
     };
 
     useEffect(() => {

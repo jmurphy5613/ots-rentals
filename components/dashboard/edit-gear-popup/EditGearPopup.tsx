@@ -13,19 +13,16 @@ const EditGearPopup: React.FC<EditGearPopupProps> = ({
     showPopup,
 }) => {
     const updateIndex = async (newValue: Gear) => {
-        axios.post(
-            `http://https://ots-rentals-server-production.up.railway.app/gear/update/${currentGear.id}`,
-            {
-                name: newValue.name,
-                picture: newValue.picture,
-                price: newValue.price,
-                description: newValue.description,
-                currentUserEmail: newValue.currentUserEmail,
-                returnDate: newValue.returnDate,
-                checkoutData: newValue.checkoutDate,
-                company: newValue.company,
-            }
-        );
+        axios.post(`http://localhost:3002/gear/update/${currentGear.id}`, {
+            name: newValue.name,
+            picture: newValue.picture,
+            price: newValue.price,
+            description: newValue.description,
+            currentUserEmail: newValue.currentUserEmail,
+            returnDate: newValue.returnDate,
+            checkoutData: newValue.checkoutDate,
+            company: newValue.company,
+        });
     };
 
     const [name, setName] = useState(currentGear.name);

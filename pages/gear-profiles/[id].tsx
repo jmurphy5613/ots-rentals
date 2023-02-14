@@ -21,13 +21,9 @@ const GearProfiles = () => {
         const { id } = router.query;
         if (!id) return;
 
-        axios
-            .get(
-                `http://https://ots-rentals-server-production.up.railway.app/gear/get-by-id/${id}`
-            )
-            .then((e) => {
-                setCurrentCamera(e.data);
-            });
+        axios.get(`http://localhost:3002/gear/get-by-id/${id}`).then((e) => {
+            setCurrentCamera(e.data);
+        });
     }, [router.isReady]);
 
     if (!currentCamera) return <div></div>;

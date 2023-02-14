@@ -16,9 +16,7 @@ const Inventory = () => {
     useEffect(() => {
         if (!user) return;
         axios
-            .get(
-                `http://https://ots-rentals-server-production.up.railway.app/gear/get-by-email/${user?.email}`
-            )
+            .get(`http://localhost:3002/gear/get-by-email/${user?.email}`)
             .then((res) => {
                 setCheckedoutGear(res.data);
             });

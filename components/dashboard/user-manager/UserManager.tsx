@@ -11,13 +11,9 @@ const UserManagement = () => {
     const [users, setUsers] = useState<Array<User>>([]);
 
     const getUsers = () => {
-        axios
-            .get(
-                "http://https://ots-rentals-server-production.up.railway.app/user/get-all"
-            )
-            .then((res) => {
-                setUsers(res.data);
-            });
+        axios.get("http://localhost:3002/user/get-all").then((res) => {
+            setUsers(res.data);
+        });
     };
 
     useEffect(() => {
@@ -44,13 +40,10 @@ const UserManagement = () => {
                 <div
                     className={styles.add}
                     onClick={() => {
-                        axios.post(
-                            "http://https://ots-rentals-server-production.up.railway.app/user/add",
-                            {
-                                email: email,
-                                name: name,
-                            }
-                        );
+                        axios.post("http://localhost:3002/user/add", {
+                            email: email,
+                            name: name,
+                        });
 
                         getUsers();
                     }}

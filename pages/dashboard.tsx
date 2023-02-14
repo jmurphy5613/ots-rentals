@@ -8,13 +8,9 @@ import UserManagement from "../components/dashboard/user-manager/UserManager";
 
 const Dashboard = () => {
     const fetchGear = () => {
-        axios
-            .get(
-                "http://https://ots-rentals-server-production.up.railway.app/gear/get-all"
-            )
-            .then((e) => {
-                setGear(e.data);
-            });
+        axios.get("http://localhost:3002/gear/get-all").then((e) => {
+            setGear(e.data);
+        });
     };
 
     useEffect(() => {
@@ -77,16 +73,13 @@ const Dashboard = () => {
                 <div
                     className={styles.add}
                     onClick={() => {
-                        axios.post(
-                            "http://https://ots-rentals-server-production.up.railway.app/gear/add",
-                            {
-                                price: price,
-                                name: name,
-                                description: description,
-                                company: company,
-                                picture: picture,
-                            }
-                        );
+                        axios.post("http://localhost:3002/gear/add", {
+                            price: price,
+                            name: name,
+                            description: description,
+                            company: company,
+                            picture: picture,
+                        });
                         setPrice("");
                         setPicture("");
                         setCompany("");
