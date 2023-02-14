@@ -24,8 +24,11 @@ const CARD_OPTIONS:StripeCardElementOptions = {
     }
 };
 
+interface PaymentFormProps {
+    handleOrders: () => void
+}
 
-const PaymentForm = () => {
+const PaymentForm:React.FC<PaymentFormProps> = ({ handleOrders }) => {
 
     const [success, setSuccess] = useState(false)
 
@@ -48,12 +51,13 @@ const PaymentForm = () => {
         if(!payment?.error) {
             try {
                 const id = payment?.paymentMethod.id
-                await axios.post("http://localhost:3001/payment/create-payment",  {
+                await axios.post("http://localhost:3002/payments/create-payment",  {
                     amount: 1000,
                     id
                 }).then(e => {
                     if(e.data.success) {
                         setSuccess(true)
+                        handleOrders()
                     }
                 })
             } catch(err) {
@@ -81,6 +85,7 @@ const PaymentForm = () => {
                     <CardElement className={styles.StripeElement} options={CARD_OPTIONS} />
                 </div>
             </fieldset>
+            <button className={styles.button}>Pay</button>
         </form>
     )
 }

@@ -55,6 +55,8 @@ const Checkout = () => {
                 );
             }
         }
+        clearGear()
+        setTimeout(() => pushToInventory(), 500);
     };
 
     useEffect(() => {
@@ -85,14 +87,14 @@ const Checkout = () => {
 
 
             {isAuthorized ? (
-                <StripeContainer />
+                <StripeContainer handleOrders={handleOrders} />
 
                 // <div className={styles["code-container"]}>
                 //     <button
                 //         onClick={() => {
                 //             handleOrders();
                 //             clearGear();
-                //             setTimeout(() => pushToInventory(), 500);
+                //             
                 //         }}
                 //         className={styles.redeem}
                 //     >

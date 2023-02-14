@@ -5,12 +5,16 @@ import PaymentForm from "../payment-form/PaymentForm"
 
 const stripeTestPromise = loadStripe(stripePublicKey)
 
-const StripeContainer = () => {
+interface StripeContainerProps {
+    handleOrders: () => void
+}
+
+const StripeContainer:React.FC<StripeContainerProps> = ({ handleOrders }) => {
 
 
     return (
         <Elements stripe={stripeTestPromise}>
-            <PaymentForm />
+            <PaymentForm handleOrders={handleOrders} />
         </Elements>
     )
 }
